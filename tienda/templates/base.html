@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="" width="30" height="30" alt="">
+        </a>
+
+        <div class="d-flex">
+            {% if user.is_authenticated %}
+                <span class="navbar-text m-2"> Hola {{user.username}} </span>
+                <a href="{% url 'salir' %}" class="btn btn-primary m-2">Cerrar sesion</a>
+                <a href="{% url 'publicar_resena' %}" class="btn btn-primary m-2">Dejanos un mensaje</a>
+            {% else %}
+                <a href="{% url 'registro' %}" class="btn btn-primary m-2">Registrarse</a>
+                <a href="{% url 'acceder' %}" class="btn btn-primary m-2">Iniciar sesion</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Contenido de la página -->
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Archivos JavaScript de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

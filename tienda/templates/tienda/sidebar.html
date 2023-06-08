@@ -1,0 +1,18 @@
+<div class="container-fluid align-items-center">
+    <h3>Reviews de nuestros usuarios</h3>
+</div>
+<div class="row">
+    {% for review in reviews %}
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ review.usuario.username }} :</h5>
+            <p class="card-text">
+              {{ review.contenido }}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  

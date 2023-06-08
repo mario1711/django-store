@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    Anadir resena
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'publicar_resena' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Enviar reseña</button>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
